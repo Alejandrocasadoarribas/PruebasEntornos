@@ -16,7 +16,7 @@ public class Pedido implements Carrito, Pagable{
 
     @Override
     public int cantidad() {
-        return 0;
+        return productos.size();
     }
 
     @Override
