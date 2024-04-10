@@ -1,17 +1,27 @@
 package Makigas.JUnit5.Catalogo;
 
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class PedidoTest {
 
+    Producto p1,p2;
+    Pedido pedido;
+
     @BeforeEach
     void setUp() {
+        pedido  = new Pedido();
+        p1 = new Producto("Coco",400);
+        p2 = new Producto("Canela", 200);
     }
 
     @AfterEach
     void tearDown() {
+        pedido.vaciar();
     }
 
     @Test
@@ -19,43 +29,29 @@ class PedidoTest {
     }
 
     @Test
-    @DisplayName("Con 0 productos")
-    void testCantidad() {
-        Pedido p = new Pedido();
-
-        //Vamos a probar que la cantidad sea 0
-        assertEquals(0,p.cantidad());
-
+    @DisplayName("Pedido con 0 productos")
+    void testCantidad1() {
+        // vamos a probar que cuando el pedido está vacío la cantidad que devuelve es 0
+        assertEquals(0,pedido.cantidad());
     }
 
     @Test
-    @DisplayName("Con un producto")
+    @DisplayName("Pedido con 1 producto")
     void testCantidad2() {
-        // para probar el metodo cantidad necesito un objeto de tipo pedido con una serie de productos añadidos
-        Producto p1 = new Producto("Coco", 400);
+        // para probar el método cantidad necesito un objeto de tipo Pedido con una serie de productos
+        pedido.agregar(p1);
 
-
-        Pedido p = new Pedido();
-
-        p.agregar(p1);
-
-        assertEquals(1,p.cantidad());
+        assertEquals(1, pedido.cantidad());
     }
 
     @Test
-    @DisplayName("Con dos productos")
+    @DisplayName("Pedido con 2 productos")
     void testCantidad3() {
-        // para probar el metodo cantidad necesito un objeto de tipo pedido con una serie de productos añadidos
-        Producto p1 = new Producto("Coco", 400);
-        Producto p2 = new Producto("Canela", 200);
+        // para probar el método cantidad necesito un objeto de tipo Pedido con una serie de productos
+        pedido.agregar(p1);
+        pedido.agregar(p2);
 
-        Pedido p = new Pedido();
-
-        p.agregar(p1);
-        p.agregar(p2);
-
-        Assertions.assertEquals(2,p.cantidad());
-
+        assertEquals(2,pedido.cantidad());
     }
 
     @Test
