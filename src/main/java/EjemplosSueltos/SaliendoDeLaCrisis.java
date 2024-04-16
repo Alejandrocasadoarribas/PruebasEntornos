@@ -1,3 +1,5 @@
+package EjemplosSueltos;
+
 import java.util.Arrays;
 import java.util.Scanner;
 

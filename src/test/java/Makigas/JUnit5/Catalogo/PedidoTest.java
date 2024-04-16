@@ -31,7 +31,7 @@ class PedidoTest {
     @Test
     @DisplayName("Pedido con 0 productos")
     void testCantidad1() {
-        // vamos a probar que cuando el pedido está vacío la cantidad que devuelve es 0
+        // Probamos que cuando el pedido está vacío la cantidad que devuelve es 0
         assertEquals(0,pedido.cantidad());
     }
 
